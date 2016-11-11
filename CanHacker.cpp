@@ -623,9 +623,9 @@ CanHacker::ERROR CanHacker::receiveCloseCommand(const char *buffer, const int le
         return ERROR_INVALID_COMMAND;
     }
 
-    if (!isConnected()) {
-        return writeStream(BEL);
-    }
+//    if (!isConnected()) {     // Desktop canhacker executes this command before connecting, after "v"
+//        return writeStream(BEL);
+//    }
     ERROR error = disconnectCan();
     if (error != ERROR_OK) {
         return error;
