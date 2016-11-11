@@ -27,8 +27,14 @@ void loop() {
     if (digitalRead(INT_PIN) == LOW) {
         canHacker->processInterrupt();
     }
+
+    // uncomment that lines for Leonardo, Pro Micro or Esplora
+    // if (Serial.available()) {
+    //   lineReader->process();    
+    // }
 }
 
+// serialEvent handler not supported by Leonardo, Pro Micro and Esplora
 void serialEvent() {
     lineReader->process();
 }
