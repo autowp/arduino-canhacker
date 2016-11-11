@@ -615,7 +615,7 @@ CanHacker::ERROR CanHacker::receiveTimestampCommand(const char *buffer, const in
 CanHacker::ERROR CanHacker::receiveCloseCommand(const char *buffer, const int length) {
     writeDebugStream(F("receiveCloseCommand\n"));
 
-    if (length != 1) {
+    if (length != 1 && length !=7) {    // See log from desktop app canhacker:  CFFFFFF  (after v)
         return ERROR_INVALID_COMMAND;
     }
 
@@ -623,9 +623,9 @@ CanHacker::ERROR CanHacker::receiveCloseCommand(const char *buffer, const int le
         return ERROR_INVALID_COMMAND;
     }
 
-    if (!isConnected()) {
-        return writeStream(BEL);
-    }
+//    if (!isConnected()) {      // Desktop canhacker executes this command before connecting: CFFFFFF  (after v)
+//        return writeStream(BEL);
+//    }
     ERROR error = disconnectCan();
     if (error != ERROR_OK) {
         return error;
