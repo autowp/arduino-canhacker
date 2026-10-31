@@ -65,6 +65,15 @@ void loop() {
 }
 ```
 
+## Build with platformio
+
+```
+## Set CONFIG_CLOCK_MHZ, matching the crystal resonator on the MCP2515 board.
+$(EDITOR) platformio.ini
+
+make
+```
+
 ## Protocol
 
 Protocol CanHacker (lawicel) described in [CanHacker for Windows documentation](http://www.mictronics.de/projects/usb-can-bus/)

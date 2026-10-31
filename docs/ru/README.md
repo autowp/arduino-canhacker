@@ -66,6 +66,15 @@ void loop() {
 }
 ```
 
+## Сборка при помощи platformio
+
+```
+## Пропишите CONFIG_CLOCK_MHZ, соответствующую кварцевому резонатору на плате MCP2515
+$(EDITOR) platformio.ini
+
+make
+```
+
 ## Протокол
 
 Протокол CanHacker (lawicel) описан в [документации к приложению CanHacker](http://www.mictronics.de/projects/usb-can-bus/)

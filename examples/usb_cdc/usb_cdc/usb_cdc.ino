@@ -18,6 +18,13 @@ void setup() {
     SPI.begin();
     
     canHacker = new CanHacker(&Serial, NULL, SPI_CS_PIN);
+    #if CONFIG_CLOCK_MHZ == 8
+        canHacker->setClock(MCP_8MHZ);
+    #elif CONFIG_CLOCK_MHZ == 16
+        canHacker->setClock(MCP_16MHZ);
+    #elif CONFIG_CLOCK_MHZ == 20
+        canHacker->setClock(MCP_20MHZ);
+    #endif
     lineReader = new CanHackerLineReader(canHacker);
     
     pinMode(INT_PIN, INPUT);
